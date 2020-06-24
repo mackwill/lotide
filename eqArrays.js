@@ -5,9 +5,15 @@ const assertEqual = (actual, expected) => {
 };
 
 const eqArrays = (firstArray, secondArray) => {
-  const boolFlag = firstArray.every((currentElem) => {
-    return currentElem === secondArray[firstArray.indexOf(currentElem)];
-  });
+  let boolFlag = null;
+
+  if (firstArray.length !== secondArray.length) {
+    boolFlag = false;
+  } else {
+    boolFlag = firstArray.every((currentElem) => {
+      return currentElem === secondArray[firstArray.indexOf(currentElem)];
+    });
+  }
   return boolFlag;
 };
 
