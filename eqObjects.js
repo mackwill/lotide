@@ -22,6 +22,9 @@ const eqObjects = (object1, object2) => {
     return false;
   } else {
     for (let key in object1) {
+      if (typeof object1[key] === "object" && !Array.isArray(object1[key])) {
+        return eqObjects(object1[key], object2[key]);
+      }
       if (Array.isArray(object1[key]) && Array.isArray(object2[key])) {
         return eqArrays(object1[key], object2[key]);
       } else if (object1[key] !== object2[key]) {
@@ -48,3 +51,12 @@ const eqObjects = (object1, object2) => {
 // const cd2 = { c: "1", d: ["2", 3, 4] };
 // eqObjects(cd, cd2); // => false
 // assertEqual(eqObjects(cd, cd2), false);
+
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
+console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => true
+
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => false
+console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })); // => false
+
+// eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => false
+// eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }); // => false
