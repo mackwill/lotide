@@ -11,7 +11,14 @@ const eqArrays = (firstArray, secondArray) => {
     boolFlag = false;
   } else {
     boolFlag = firstArray.every((currentElem) => {
-      return currentElem === secondArray[firstArray.indexOf(currentElem)];
+      if (Array.isArray(currentElem)) {
+        return eqArrays(
+          currentElem,
+          secondArray[firstArray.indexOf(currentElem)]
+        );
+      } else {
+        return currentElem === secondArray[firstArray.indexOf(currentElem)];
+      }
     });
   }
   return boolFlag;
@@ -22,3 +29,17 @@ const eqArrays = (firstArray, secondArray) => {
 // assertEqual(eqArrays([1, 2, 3], [3, 2, 1]), false);
 // assertEqual(eqArrays([1, 2, "3"], [1, 2, 3]), false);
 // assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true);
+
+// assertEqual(eqArrays([[2, 3], [4]], [[2, 3], [4]]), true); // => true
+
+// assertEqual(
+//   eqArrays(
+//     [[2, 3], [4]],
+//     [
+//       [2, 3],
+//       [4, 5],
+//     ]
+//   ),
+//   false
+// ); // => false
+// assertEqual(eqArrays([[2, 3], [4]], [[2, 3], 4]), false); // => false
