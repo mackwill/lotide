@@ -14,8 +14,3 @@ const letterPositions = (sentence) => {
 };
 
 module.exports = letterPositions;
-
-// Test Code
-// const results1 = letterPositions("hello hello");
-// console.log(results1.h);
-// assertArraysEqual(results1.e, [1, 6], true);
