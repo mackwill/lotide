@@ -1,17 +1,3 @@
-const eqArrays = (firstArray, secondArray) => {
-  const boolFlag = firstArray.every((currentElem) => {
-    return currentElem === secondArray[firstArray.indexOf(currentElem)];
-  });
-  return boolFlag;
-};
-
-const assertArraysEqual = (firstArray, secondArray, expected) => {
-  let actual = eqArrays(firstArray, secondArray);
-  actual === expected
-    ? console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`)
-    : console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
-};
-
 const letterPositions = (sentence) => {
   let posOfLetter = {};
   sentence = sentence.split(" ").join("").toLowerCase();
@@ -26,6 +12,8 @@ const letterPositions = (sentence) => {
   }
   return posOfLetter;
 };
+
+module.exports = letterPositions;
 
 // Test Code
 // const results1 = letterPositions("hello hello");

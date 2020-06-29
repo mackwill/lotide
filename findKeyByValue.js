@@ -1,15 +1,11 @@
-const assertEqual = (actual, expected) => {
-  actual === expected
-    ? console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`)
-    : console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
-};
-
 const findKeyByValue = (inputObject, valueToFind) => {
   for (let key in inputObject) {
     if (inputObject[key] === valueToFind) return key;
   }
   return undefined;
 };
+
+module.exports = findKeyByValue;
 
 // Test Code
 // const bestTVShowsByGenre = {

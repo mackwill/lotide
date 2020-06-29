@@ -1,9 +1,3 @@
-const assertEqual = (actual, expected) => {
-  actual === expected
-    ? console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`)
-    : console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
-};
-
 const countLetters = (strToSearch) => {
   let foundLetters = {};
 
@@ -17,6 +11,8 @@ const countLetters = (strToSearch) => {
 
   return foundLetters;
 };
+
+module.exports = countLetters;
 
 // Test Code
 // let results = countLetters("LHL");

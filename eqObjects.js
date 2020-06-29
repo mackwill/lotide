@@ -1,21 +1,4 @@
-const assertEqual = (actual, expected) => {
-  actual === expected
-    ? console.log(`✅✅✅ Assertion Passed: ${actual} === ${expected}`)
-    : console.log(`🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`);
-};
-
-const eqArrays = (firstArray, secondArray) => {
-  let boolFlag = null;
-
-  if (firstArray.length !== secondArray.length) {
-    boolFlag = false;
-  } else {
-    boolFlag = firstArray.every((currentElem) => {
-      return currentElem === secondArray[firstArray.indexOf(currentElem)];
-    });
-  }
-  return boolFlag;
-};
+const eqArrays = require("./eqArrays");
 
 const eqObjects = (object1, object2) => {
   if (Object.keys(object1).length !== Object.keys(object2).length) {
@@ -36,6 +19,7 @@ const eqObjects = (object1, object2) => {
   return true;
 };
 
+module.exports = eqObjects;
 // Test Code
 // const ab = { a: "1", b: "2" };
 // const ba = { b: "2", a: "1" };
@@ -52,11 +36,11 @@ const eqObjects = (object1, object2) => {
 // eqObjects(cd, cd2); // => false
 // assertEqual(eqObjects(cd, cd2), false);
 
-assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
-console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => true
+// assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
+// console.log(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => true
 
-console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => false
-console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })); // => false
+// console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 })); // => false
+// console.log(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 })); // => false
 
 // eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }); // => false
 // eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }); // => false
